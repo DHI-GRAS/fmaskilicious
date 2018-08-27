@@ -16,7 +16,6 @@ OUTDIR=/mnt/output-dir
 # ensure that workdir is clean
 rm -rf $WORKDIR
 mkdir -p $WORKDIR
-cd $WORKDIR
 
 ls -l $INDIR
 
@@ -39,6 +38,7 @@ for granule_path in $INDIR/GRANULE/*; do
     ls -l $granuledir
 
     # call fmask
+    cd $granuledir
     /usr/GERS/Fmask_4_0/application/run_Fmask_4_0.sh $MCROOT "$@"
 
     # copy outputs from workdir
