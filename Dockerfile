@@ -16,7 +16,9 @@ RUN chmod +x Fmask_4_0.install && \
 COPY run_fmask.sh /usr/local/bin/run_fmask.sh
 RUN chmod +x /usr/local/bin/run_fmask.sh
 
-VOLUME ["/work"]
+VOLUME ["/mnt/input-dir"]
+VOLUME ["/mnt/output-dir"]
+
 WORKDIR /work
 
 ENTRYPOINT ["/usr/local/bin/run_fmask.sh"]
