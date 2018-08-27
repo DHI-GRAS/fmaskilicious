@@ -60,6 +60,7 @@ for granule_path in $INDIR/GRANULE/*; do
     if [ ! -d $granuledir/FMASK_DATA ]; then
         echo "Error while running FMask on granule $granule"
         exit 1
+    fi
 
     # copy outputs from workdir
     mkdir -p $OUTDIR/$granule
