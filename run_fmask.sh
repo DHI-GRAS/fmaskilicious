@@ -3,18 +3,30 @@
 set -e
 shopt -s nullglob
 
-if [ "$1" == "--help" ]; then
-    echo "Usage: run_fmask.sh FMASK_OPTIONS"
+MCROOT=/usr/local/MATLAB/MATLAB_Runtime/v93
+
+# parse command line
+if [ $# -lt 2 ] || [ "$1" == "--help" ]; then
+    echo "Usage: run_fmask.sh SCENE_ID FMASK_OPTIONS"
     exit 0
 fi
 
-MCROOT=/usr/local/MATLAB/MATLAB_Runtime/v93
-INDIR=/mnt/input-dir
-WORKDIR=/work
+SCENE_ID="$1"
+INDIR=/mnt/input-dir/$SCENE_ID.SAFE
+WORKDIR=/work/$SCENE_ID.SAFE
 OUTDIR=/mnt/output-dir
 
+if [ ! -d "$INDIR" ]; then
+    echo "Error: no SAFE file found for scene ID $SCENE_ID"
+    exit 1
+fi
+
+shift
+
 # ensure that workdir is clean
-rm -rf $WORKDIR
+if [ -d $WORKDIR ]; then
+    rm -rf $WORKDIR
+fi
 mkdir -p $WORKDIR
 
 ls -l $INDIR
