@@ -21,19 +21,34 @@ cd $WORKDIR
 ls -l $INDIR
 
 for f in $INDIR/*; do
-    ln -s $(readlink -f $f) $WORKDIR/$(basename $f)
+    if [ "$(basename $f)" != "GRANULE" ]; then
+        ln -s $(readlink -f $f) $WORKDIR/$(basename $f)
+    fi
+done
+
+# run fmask for every granule in SAFE
+for granule_path in $INDIR/GRANULE/*; do
+    granule=$(basename $granule_path)
+    echo "Processing granule $granule"
+
+    granuledir=$WORKDIR/GRANULE/$granule
+    mkdir -p $granuledir
+    for f in $INDIR/GRANULE/$granule/*; do
+        ln -s $(readlink -f $f) $granuledir/$(basename $f)
+    done
+    ls -l $granuledir
+
+    # call fmask
+    /usr/GERS/Fmask_4_0/application/run_Fmask_4_0.sh $MCROOT "$@"
+
+    # copy outputs from workdir
+    mkdir -p $OUTDIR/$granule
+    for f in $granuledir/FMASK_DATA/*; do
+        cp $f $OUTDIR/$granule
+    done
 done
 
 ls -l $WORKDIR
-
-# run fmask
-/usr/GERS/Fmask_4_0/application/run_Fmask_4_0.sh $MCROOT "$@"
-
-# copy outputs from workdir
-ls -l $WORKDIR
-
-for f in $WORKDIR/FMASK_DATA/*; do
-    cp $f $OUTDIR
-done
+ls -l $WORKDIR/GRANULE/*
 
 rm -rf $WORKDIR
