@@ -5,6 +5,7 @@ shopt -s nullglob
 
 MCROOT=/usr/local/MATLAB/MATLAB_Runtime/v93
 
+
 # parse command line
 if [ $# -lt 1 ] || [ "$1" == "--help" ]; then
     echo "Usage: run_fmask.sh SCENE_ID FMASK_OPTIONS"
@@ -23,19 +24,21 @@ fi
 
 shift
 
+
 # ensure that workdir is clean
 if [ -d $WORKDIR ]; then
     rm -rf $WORKDIR
 fi
 mkdir -p $WORKDIR
 
-ls -l $INDIR
 
+# symlink safe data into workdir
 for f in $INDIR/*; do
     if [ "$(basename $f)" != "GRANULE" ]; then
         ln -s $(readlink -f $f) $WORKDIR/$(basename $f)
     fi
 done
+
 
 # run fmask for every granule in SAFE
 for granule_path in $INDIR/GRANULE/*; do
@@ -44,14 +47,19 @@ for granule_path in $INDIR/GRANULE/*; do
 
     granuledir=$WORKDIR/GRANULE/$granule
     mkdir -p $granuledir
+
+    # symlink granule data into workdir
     for f in $INDIR/GRANULE/$granule/*; do
         ln -s $(readlink -f $f) $granuledir/$(basename $f)
     done
-    ls -l $granuledir
 
     # call fmask
     cd $granuledir
     /usr/GERS/Fmask_4_0/application/run_Fmask_4_0.sh $MCROOT "$@"
+
+    if [ ! -d $granuledir/FMASK_DATA ]; then
+        echo "Error while running FMask on granule $granule"
+        exit 1
 
     # copy outputs from workdir
     mkdir -p $OUTDIR/$granule
@@ -60,7 +68,5 @@ for granule_path in $INDIR/GRANULE/*; do
     done
 done
 
-ls -l $WORKDIR
-ls -l $WORKDIR/GRANULE/*
 
 rm -rf $WORKDIR

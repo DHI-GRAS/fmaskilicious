@@ -6,7 +6,9 @@ RUN apt-get update && \
     apt-get install -y \
       'curl' \
       'unzip' \
-      'libxmu6'
+      'libxmu6' \
+      'openjdk-11-jdk' \
+      'xserver-xorg'
 
 COPY Fmask_4_0.install .
 RUN chmod +x Fmask_4_0.install && \
