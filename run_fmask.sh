@@ -6,7 +6,7 @@ shopt -s nullglob
 MCROOT=/usr/local/MATLAB/MATLAB_Runtime/v93
 
 # parse command line
-if [ $# -lt 2 ] || [ "$1" == "--help" ]; then
+if [ $# -lt 1 ] || [ "$1" == "--help" ]; then
     echo "Usage: run_fmask.sh SCENE_ID FMASK_OPTIONS"
     exit 0
 fi
