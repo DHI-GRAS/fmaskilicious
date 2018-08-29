@@ -26,5 +26,7 @@ VOLUME ["/mnt/output-dir"]
 WORKDIR /work
 RUN chmod 777 /work /mnt/output-dir
 
+ENV MCR_CACHE_ROOT="/tmp/mcr-cache"
+
 ENTRYPOINT ["/usr/local/bin/run_fmask.sh"]
 CMD ["--help"]
