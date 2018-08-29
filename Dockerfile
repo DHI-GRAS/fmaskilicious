@@ -1,4 +1,6 @@
-FROM ubuntu:latest
+FROM ubuntu:18.04
+
+MAINTAINER Dion Häfner <dimh@dhigroup.com>
 
 USER root
 
