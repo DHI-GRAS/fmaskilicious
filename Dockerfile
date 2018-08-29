@@ -24,6 +24,7 @@ VOLUME ["/mnt/input-dir"]
 VOLUME ["/mnt/output-dir"]
 
 WORKDIR /work
+RUN chmod 777 /work /mnt/output-dir
 
 ENTRYPOINT ["/usr/local/bin/run_fmask.sh"]
 CMD ["--help"]
