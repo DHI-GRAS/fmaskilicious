@@ -7,12 +7,16 @@ MCROOT=/usr/local/MATLAB/MATLAB_Runtime/v93
 
 
 # parse command line
-if [ $# -lt 1 ] || [ "$1" == "--help" ]; then
-    echo "Usage: run_fmask.sh SCENE_ID FMASK_OPTIONS"
+if [ $# -lt 2 ] || [ "$1" == "--help" ]; then
+    echo "Usage: run_fmask.sh SCENE_ID GRANULE FMASK_OPTIONS"
     exit 0
 fi
 
 SCENE_ID="$1"
+shift
+GRANULE="$1"
+shift
+
 INDIR=/mnt/input-dir/$SCENE_ID.SAFE
 WORKDIR=/work/$SCENE_ID.SAFE
 OUTDIR=/mnt/output-dir
@@ -21,8 +25,6 @@ if [ ! -d "$INDIR" ]; then
     echo "Error: no SAFE file found for scene ID $SCENE_ID"
     exit 1
 fi
-
-shift
 
 
 # ensure that workdir is clean
@@ -41,7 +43,7 @@ done
 
 
 # run fmask for every granule in SAFE
-for granule_path in $INDIR/GRANULE/*; do
+for granule_path in "$INDIR/GRANULE/$GRANULE"; do
     granule=$(basename $granule_path)
     echo "Processing granule $granule"
 
