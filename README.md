@@ -4,7 +4,7 @@ Orchestrate FMask 4.0 cloud masking 🍭
 
 ## Installation
 
-1. [Download FMask 4.0 standalone installer](https://drive.google.com/file/d/1--xhPuTsYvxKimSuuAAVmExsvqaKPX1c/view?usp=sharing)
+1. [Download FMask 4.0 standalone installer](https://github.com/GERSL/Fmask)
    and copy it into the root of this repository.
 
 2. Run
