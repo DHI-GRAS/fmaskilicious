@@ -3,7 +3,7 @@
 set -e
 shopt -s nullglob
 
-MCROOT=/usr/local/MATLAB/MATLAB_Runtime/v95
+MCROOT=/usr/local/MATLAB/MATLAB_Runtime/v96
 
 
 # parse command line
