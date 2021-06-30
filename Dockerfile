@@ -12,10 +12,10 @@ RUN apt-get update && \
       'openjdk-11-jdk' \
       'xserver-xorg'
 
-COPY Fmask_4_1_Linux.install .
-RUN chmod +x Fmask_4_1_Linux.install && \
-    ./Fmask_4_1_Linux.install -mode silent -agreeToLicense yes && \
-    rm Fmask_4_1_Linux.install
+COPY Fmask_4_3_Linux.install .
+RUN chmod +x Fmask_4_3_Linux.install && \
+    ./Fmask_4_3_Linux.install -mode silent -agreeToLicense yes && \
+    rm Fmask_4_3_Linux.install
 
 COPY run_fmask.sh /usr/local/bin/run_fmask.sh
 RUN chmod +x /usr/local/bin/run_fmask.sh
