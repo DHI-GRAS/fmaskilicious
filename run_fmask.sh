@@ -3,7 +3,7 @@
 set -e
 shopt -s nullglob
 
-MCROOT=/usr/local/MATLAB/MATLAB_Runtime/v96
+MCROOT=/usr/local/MATLAB/MATLAB_Runtime/v910
 
 
 # parse command line
@@ -57,7 +57,7 @@ for granule_path in "$INDIR/GRANULE/$GRANULE"; do
 
     # call fmask
     cd $granuledir
-    /usr/GERS/Fmask_4_3/application/run_Fmask_4_3.sh $MCROOT "$@"
+    /usr/GERS/Fmask_4_4/application/run_Fmask_4_4.sh $MCROOT "$@"
 
     if [ ! -d $granuledir/FMASK_DATA ]; then
         echo "Error while running FMask on granule $granule"
