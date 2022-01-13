@@ -1,6 +1,6 @@
 FROM ubuntu:18.04
 
-MAINTAINER Jonas Sølvsteen <josl@dhigroup.com>
+LABEL maintainer.name="Jonas Sølvsteen" maintainer.email="josl@dhigroup.com"
 
 USER root
 
