@@ -1,6 +1,6 @@
 # fmaskilicious
 
-Orchestrate FMask 4.4 cloud masking 🍭
+Orchestrate [FMask 4.4](https://github.com/GERSL/Fmask cloud masking) 🍭
 
 ## Installation
 
