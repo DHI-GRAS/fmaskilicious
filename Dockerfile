@@ -1,6 +1,6 @@
 FROM ubuntu:18.04
 
-MAINTAINER Jonas Sølvsteen <josl@dhigroup.com>
+LABEL maintainer.name="Jonas Sølvsteen" maintainer.email="josl@dhigroup.com"
 
 USER root
 
@@ -12,10 +12,10 @@ RUN apt-get update && \
       'openjdk-11-jdk' \
       'xserver-xorg'
 
-COPY Fmask_4_3_Linux.install .
-RUN chmod +x Fmask_4_3_Linux.install && \
-    ./Fmask_4_3_Linux.install -mode silent -agreeToLicense yes && \
-    rm Fmask_4_3_Linux.install
+COPY Fmask_4_4_Linux_mcr.install .
+RUN chmod +x Fmask_4_4_Linux_mcr.install && \
+    ./Fmask_4_4_Linux_mcr.install -mode silent -agreeToLicense yes && \
+    rm Fmask_4_4_Linux_mcr.install
 
 COPY run_fmask.sh /usr/local/bin/run_fmask.sh
 RUN chmod +x /usr/local/bin/run_fmask.sh

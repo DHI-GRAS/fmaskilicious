@@ -1,10 +1,10 @@
 # fmaskilicious
 
-Orchestrate FMask 4.3 cloud masking 🍭
+Orchestrate [FMask 4.4  cloud masking](https://github.com/GERSL/Fmask) 🍭
 
 ## Installation
 
-1. [Download FMask 4.3 standalone Linux installer](https://github.com/GERSL/Fmask)
+1. Download FMask 4.4 standalone Linux installer in this [Google Drive](https://drive.google.com/drive/folders/1chO-RP8FYIobCnYPYdGEt0OeQeMoYLd0?usp=sharing)
    and copy it into the root of this repository.
 
 2. Run
