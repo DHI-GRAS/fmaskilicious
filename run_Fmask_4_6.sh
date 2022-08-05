@@ -1,7 +1,7 @@
 #!/bin/sh
 # script for execution of deployed applications
 #
-# Sets up the MATLAB Runtime environment for the current $ARCH and executes 
+# Sets up the MATLAB Runtime environment for the current $ARCH and executes
 # the specified command.
 #
 exe_name=$0
@@ -27,10 +27,11 @@ else
   args=
   while [ $# -gt 0 ]; do
       token=$1
-      args="${args} \"${token}\"" 
+      args="${args} \"${token}\""
       shift
   done
-  eval "\"${exe_dir}/Fmask_4_5\"" ${exe_dir}/AuxiData $args  
+  # eval "\"${exe_dir}/Fmask_4_5\"" $args
+  # set the directory of auxiliary dataset
+  eval "\"${exe_dir}/Fmask_4_6\"" ${exe_dir}/AuxiData $args
 fi
 exit
-
