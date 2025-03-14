@@ -30,7 +30,9 @@ else
       args="${args} \"${token}\"" 
       shift
   done
-  eval "\"${exe_dir}/Fmask_4_5\"" ${exe_dir}/AuxiData $args  
+  # eval "\"${exe_dir}/Fmask_4_5\"" $args
+  # set the directory of auxiliary dataset 
+  eval "\"${exe_dir}/Fmask_4_7\"" $args ${exe_dir}/AuxiData
 fi
 exit
 
